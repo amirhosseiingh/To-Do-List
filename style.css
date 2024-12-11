@@ -1,0 +1,15 @@
+#modal {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    /* z-index: 10;  */
+    /* background-color: #ffffff;  */
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1); 
+    border-radius: 8px; 
+    padding: 20px; 
+    width: 400px; 
+}
+#modal-box-container{
+    background: linear-gradient(0deg, #eceaea 0%, #ffffff 49%);
+}

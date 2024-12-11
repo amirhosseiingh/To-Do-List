@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>HW-WEEK-9</title>
+</head>
+
+<body id="body">
+    <header>
+        <div class="bg-purple-800 flex justify-between p-4 text-white items-center">
+            <div class="flex gap-4 items-center">
+                <div>
+                    <button>
+                        <img class="w-8" src="./assets/hamburger-list-menu-svgrepo-com.svg" alt="">
+                    </button>
+                </div>
+                <p class="text-3xl">My To-Do Tasks</p>
+            </div>
+            <div class="flex gap-4">
+                <input class="bg-purple-200 rounded" type="search" placeholder=" 🔍search">
+                <div>
+                    <button type="submit"><img class="w-6" src="./assets/filter-svgrepo-com (4).svg" alt=""></button>
+                </div>
+                <div>
+                    <button onclick="openModal()" id="add-btn" type="submit">
+                        <img class="w-6 hover:bg-white rounded" src="./assets/plus-square.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <table class="w-full border-separate border-spacing-0 bg-white z-0">
+            <tr class=" text-white">
+                <th class="p-2 bg-white text-black border border-gray-400">Task Name</th>
+                <th class="p-2 bg-white text-black border border-gray-400">Priority</th>
+                <th class="p-2 bg-white text-black border border-gray-400">Status</th>
+                <th class="p-2 bg-white text-black border border-gray-400">Deadline</th>
+                <th class="p-2 bg-white text-black border border-gray-400">Actions</th>
+            </tr>
+            <tbody id="todo-list"></tbody>
+        </table>
+    </main>
+    <div id="modal" class="flex justify-center justify-items-center hidden ">
+        <div  class="flex flex-col gap-8 p-4  w-96  rounded shadow-md border border-gray-400" id="modal-box-container">
+            <h2 class="text-2xl font-semibold">Add your task</h2>
+            <!-- choice option -->
+             <!-- task-name -->
+            <div class="flex flex-col gap-2">
+                <label class="text-xl" for="task-Name">Task Name: </label>
+                <input id="task-name" class=" border border-gray-500 rounded shadow-md py-0.5 px-1 " type="text" placeholder=" write it">
+            </div>
+            <p class="text-xl">select it</p>
+
+            <!-- task-priority -->
+            <div class="border border-gray-500 py-0.5 px-1 rounded">
+                <label for="task-priority">Priority: </label>
+                <select class="p-0.5 bg-gray-100 border rounded border-gray-400" id="task-priority" class="rounded" name="Priority">
+                    <option disabled selected hidden>Please choose an option</option>
+                    <option class="bg-gray-300 text-black" value="High">High</option>
+                    <option class="bg-gray-400 text-black" value="Medium">Medium</option>
+                    <option class="bg-gray-500 text-black" value="Low">Low</option>
+                </select>
+            </div>
+
+            <!-- task-status -->
+            <div class="border border-gray-500 py-0.5 px-1 rounded">
+                <label for="task-status">Status:</label>
+                <select class="p-0.5 bg-gray-100 border rounded border-gray-400" id="task-status"  class="rounded" name="Priority">
+                    <option disabled selected hidden>Please choose an option</option>
+                    <option class="bg-gray-300 text-black" value="To do">To do</option>
+                    <option class="bg-gray-400 text-black" value="Doing">Doing</option>
+                    <option class="bg-gray-500 text-black " value="Done">Done</option>
+                </select>
+            </div>
+            <!-- task-deadline -->
+            <div class="border border-gray-500 p-0.5 rounded ">
+                <label class="p-0.5 bg-gray-100" for="task-deadline">Deadline:</label>
+                <input class="p-0.5 bg-gray-200 border rounded border-gray-400" id="task-deadline" type="date">
+            </div>
+            <!-- btn save & cancel -->
+            <div class="flex justify-evenly">
+                <div class="border border-gray-400 p-1 w-24 text-center hover:bg-gray-300 rounded border-2">
+                    <button onclick="closeModal()" id="cancel-modal">cancel</button>
+                </div>
+                <div class="border border-gray-400 p-1 w-24 text-center hover:bg-gray-300 rounded border-2">
+                    <button id="save-btn" onclick="saveTask()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal for loading -->
+    <div id="modal-box"
+            class="w-full h-screen bg-gray-700 fixed top-0 hidden bg-opacity-70 z-1000 flex justify-center items-center">
+            <p class="text-white text-5xl">Be Patient...</p>
+        </div>
+        <!-- modal for view details -->
+        <div class="flex justify-center items-center">
+            <div class=" hidden flex flex-col gap-1 p-2 border-2 border-gray-400  z-1000 rounded-md w-[400px] bg-[#cfcfee] text-gray-900" id="modal-details">
+             </div>
+        </div>
+    <script src="./script.js"></script>
+</body>
+</html>
