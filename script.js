@@ -12,6 +12,7 @@ const body = document.getElementById("body")
 let tasks = [];
 const saveBtn = document.getElementById("save-btn");
 const modalDetails = document.getElementById("modal-details");
+const taskNameError = document.getElementById("taskName-error");
 
 
 // const priority = taskPriority.value;
@@ -35,30 +36,17 @@ function getDataFromLocalStorage() {
     renderTable();
 }
 
-// add to do list
 
-// function addNewTaskToDoList(name, priority, status, deadline) {
-//   const newRow = document.createElement("tr");
-//   newRow.innerHTML = `
-//     <td class="p-2 text-center border border-gray-400">${name}</td>
-//     <td class="p-2 text-center border border-gray-400">${priority}</td>
-//     <td class="p-2 text-center border border-gray-400"> ${status}</td>
-//     <td class="p-2 text-center border border-gray-400">
-//         <div>${deadline}</div>
-//     </td>
-//     <td class="p-4 text-center border border-gray-400">
-//       <div class="flex flex-row gap-3 justify-center items-center">
-//          <button><img src="./assets/trash.svg" alt="delete-btn"></button>
-//          <button><img src="./assets/edit-3-svgrepo-com.svg" alt="edit-btn"></button>
-//          <button><img src="./assets/eye-see-show-svgrepo-com.svg" alt="eyes-btn"></button>
-//       </div>
-//     </td>
-//      `;
-//   toDoList.appendChild(newRow);
-// }
 // add new tasks
 
 function saveTask() {
+    if (taskName.value.trim() ==="") {
+        taskNameError.style.display = "block";
+        return;
+    }else{
+        taskNameError.style.display = "none";
+    }
+
         if (!loading) {
             loading = true;
         loadingHandler();
@@ -82,6 +70,8 @@ function saveTask() {
             loading =false; 
             loadingHandler();
         },2000)
+    
+        
     }
 }
 
@@ -115,6 +105,7 @@ function renderTable() {
     })  
 
 }
+// 🤷‍♂️🤷‍♂️
 window.onload = function() {
     getDataFromLocalStorage();
     }
