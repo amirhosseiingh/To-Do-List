@@ -67,7 +67,7 @@ function saveTask() {
             taskStatus.value ="Please choose an option";
             taskDeadline.value="";
             closeModal();
-            loading =false; 
+            // loading =false; 
             loadingHandler();
         },2000)
     
@@ -105,6 +105,7 @@ function renderTable() {
     })  
 
 }
+
 // 🤷‍♂️🤷‍♂️
 window.onload = function() {
     getDataFromLocalStorage();
